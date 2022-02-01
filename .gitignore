@@ -195,4 +195,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+.vscode
+curso-frontend-developer-practico
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,linux,node,react
