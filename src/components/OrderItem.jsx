@@ -1,20 +1,33 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import '../styles/OrderItem.scss';
+import icon from '@icons/icon_close.png';
+import PropTypes from 'prop-types';
+import AppContext from '../context/AppContext';
 
-const OrderItem = () => {
+const OrderItem = ({ product, index }) => {
+  const { removeFromCart } = useContext(AppContext);
+  const { title, price, images } = product;
+
   return (
     <div className='OrderItem'>
       <figure>
-        <img
-          src='https://images.pexels.com/photos/276517/pexels-photo-276517.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'
-          alt='bike'
-        />
+        <img src={images[0]} alt={title} />
       </figure>
-      <p>Bike</p>
-      <p>$30,00</p>
-      <img src='./icons/icon_close.png' alt='close' />
+      <p>{title}</p>
+      <p>${price}</p>
+      <img
+        onClick={() => removeFromCart(index)}
+        style={{ cursor: 'pointer' }}
+        src={icon}
+        alt='close'
+      />
     </div>
   );
 };
 
 export default OrderItem;
+
+OrderItem.propTypes = {
+  product: PropTypes.object,
+  index: PropTypes.number,
+};
